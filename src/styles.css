@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  font-size: 12.5px;
+  text-align: center;
+  padding-top: 300px;
+  padding-left: 350px;
+}
+
+.WeatherDays {
+  width: 100px;
+  height: 100px;
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    #f2f5f6 0%,
+    #e3eaed 0%,
+    #e3eaed 0%,
+    #e3eaed 100%,
+    #c8d7dc 100%
+  );
+}
