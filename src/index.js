@@ -1,53 +1,77 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import Modal from "react-modal";
+import InputComponent from "./InputComponent";
 import "./styles.css";
+
+const pStyle = {
+  fontSize: "40px",
+  textAlign: "center",
+  paddingTop: "50px"
+};
 
 class App extends React.Component {
   state = {
-    mondayTemp: 17,
-    tuesdayTemp: 14,
-    wednesdayTemp: 21,
-    thursdayTemp: 18,
-    fridayTemp: 9
+    days: [],
+    userInput: ""
+  };
+
+  handleChange = e => {
+    this.setState({ userInput: e.target.value });
+  };
+
+  handleFormSubmit = e => {
+    e.preventDefault();
+
+    fetch(
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+        this.state.userInput +
+        "&units=metric&APPID=028d85518865ffa64616dee5389f0ea3"
+    )
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        let days = data.list
+          .filter(day => {
+            return day.dt_txt.endsWith("15:00:00");
+          })
+          .map((day, index) => {
+            return (
+              <div key={index}>
+                <div className="card WeatherDays">
+                  <p style={{ paddingTop: 20 }}>{day.dt_txt.slice(5, 11)}</p>
+                  <p style={pStyle}>{Math.round(day.main.temp)}°</p>
+                  {day.main.temp >= 15 ? (
+                    <i className="fas fa-sun icons fa-5x" />
+                  ) : (
+                    <i className="fas fa-cloud-sun-rain fa-5x" />
+                  )}
+                </div>
+              </div>
+            );
+          });
+        this.setState(() => {
+          return {
+            days: days,
+            userInput: ""
+          };
+        });
+      })
+      .catch(error => {
+        let errors = error;
+      });
   };
 
   render() {
     return (
       <div className="App container">
-        <div className="row">
-          <div className="col-">
-            <WeatherDay day="Monday" temp={this.state.mondayTemp} />
-          </div>
-          <div className="col-">
-            <WeatherDay day="Tuesday" temp={this.state.tuesdayTemp} />
-          </div>
-          <div className="col-">
-            <WeatherDay day="Wednesday" temp={this.state.wednesdayTemp} />
-          </div>
-          <div className="col-">
-            <WeatherDay day="Thursday" temp={this.state.thursdayTemp} />
-          </div>
-          <div className="col-">
-            <WeatherDay day="Friday" temp={this.state.fridayTemp} />
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-class WeatherDay extends React.Component {
-  render() {
-    return (
-      <div className="card WeatherDays container">
-        <p>{this.props.day}</p>
-        {this.props.temp >= 15 ? (
-          <i className="fas fa-sun icons fa-3x" />
-        ) : (
-          <i class="fas fa-cloud-sun-rain fa-3x" />
-        )}
-        <p style={{ paddingTop: 8 }}>{this.props.temp}°</p>
+        <InputComponent
+          handleFormSubmit={this.handleFormSubmit}
+          handleChange={this.handleChange}
+          userInput={this.state.userInput}
+        />
+        <div className="row">{this.state.days}</div>
       </div>
     );
   }
