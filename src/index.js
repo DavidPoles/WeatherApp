@@ -4,16 +4,11 @@ import Modal from "react-modal";
 import InputComponent from "./InputComponent";
 import "./styles.css";
 
-const pStyle = {
-  fontSize: "40px",
-  textAlign: "center",
-  paddingTop: "50px"
-};
-
 class App extends React.Component {
   state = {
     days: [],
-    userInput: ""
+    userInput: "",
+    error: ""
   };
 
   handleChange = e => {
@@ -38,10 +33,10 @@ class App extends React.Component {
           })
           .map((day, index) => {
             return (
-              <div key={index}>
-                <div className="card WeatherDays">
+              <div key={index} style={{ padding: 5 }}>
+                <div className="card WeatherDays cardImg">
                   <p style={{ paddingTop: 20 }}>{day.dt_txt.slice(5, 11)}</p>
-                  <p style={pStyle}>{Math.round(day.main.temp)}°</p>
+                  <p className="pTemp">{Math.round(day.main.temp)}°</p>
                   {day.main.temp >= 15 ? (
                     <i className="fas fa-sun icons fa-5x" />
                   ) : (
@@ -58,20 +53,21 @@ class App extends React.Component {
           };
         });
       })
-      .catch(error => {
-        let errors = error;
-      });
+      .catch(error => {});
   };
 
   render() {
     return (
-      <div className="App container">
-        <InputComponent
-          handleFormSubmit={this.handleFormSubmit}
-          handleChange={this.handleChange}
-          userInput={this.state.userInput}
-        />
-        <div className="row">{this.state.days}</div>
+      <div className="App">
+        <div className="container-fluid">
+          <InputComponent
+            handleFormSubmit={this.handleFormSubmit}
+            handleChange={this.handleChange}
+            userInput={this.state.userInput}
+          />
+          {this.state.error}
+          <div className="row WeatherCards">{this.state.days}</div>
+        </div>
       </div>
     );
   }
