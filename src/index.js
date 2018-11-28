@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Modal from "react-modal";
+import Button from "@material-ui/core/Button";
 import InputComponent from "./InputComponent";
+import "typeface-roboto";
 import "./styles.css";
+import Typography from "@material-ui/core/Typography";
+import CardComponent from "./CardComponent";
 
 class App extends React.Component {
   state = {
     days: [],
-    userInput: "",
-    error: ""
+    userInput: ""
   };
 
   handleChange = e => {
@@ -33,17 +35,15 @@ class App extends React.Component {
           })
           .map((day, index) => {
             return (
-              <div key={index} style={{ padding: 5 }}>
-                <div className="card WeatherDays cardImg">
-                  <p style={{ paddingTop: 20 }}>{day.dt_txt.slice(5, 11)}</p>
-                  <p className="pTemp">{Math.round(day.main.temp)}°</p>
-                  {day.main.temp >= 15 ? (
-                    <i className="fas fa-sun icons fa-5x" />
-                  ) : (
-                    <i className="fas fa-cloud-sun-rain fa-5x" />
-                  )}
-                </div>
-              </div>
+              <CardComponent
+                i={index}
+                flip={e => {
+                  let card = document.getElementById(index);
+                  card.classList.toggle("is-flipped");
+                }}
+                date={day.dt_txt.slice(5, 11)}
+                temp={Math.round(day.main.temp)}
+              />
             );
           });
         this.setState(() => {
@@ -58,16 +58,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="container-fluid">
+      <div>
+        <div className="App">
+          <h1 className="title">WORLD WEATHER</h1>
           <InputComponent
             handleFormSubmit={this.handleFormSubmit}
             handleChange={this.handleChange}
             userInput={this.state.userInput}
           />
-          {this.state.error}
-          <div className="row WeatherCards">{this.state.days}</div>
         </div>
+        {this.state.days}
       </div>
     );
   }

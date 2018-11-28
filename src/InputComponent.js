@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
 
 const InputComponent = props => {
   return (
@@ -8,7 +10,7 @@ const InputComponent = props => {
           <div class="input-group-prepend" />
           <input
             type="text"
-            class="form-control"
+            className="form-control input-component"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-lg"
             onChange={props.handleChange}
@@ -16,7 +18,7 @@ const InputComponent = props => {
             value={props.userInput}
           />
         </div>
-        <button className="btn btn-secondary btn-lg" style={{ width: 200 }}>
+        <button className="btn" style={{ width: 200 }}>
           Submit
         </button>
       </form>
