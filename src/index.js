@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Button from "@material-ui/core/Button";
 import InputComponent from "./InputComponent";
 import "typeface-roboto";
-import "./styles.css";
+import "./styles/styles.scss";
 import Typography from "@material-ui/core/Typography";
 import CardComponent from "./CardComponent";
 

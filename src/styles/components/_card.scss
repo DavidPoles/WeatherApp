@@ -1,0 +1,35 @@
+.scene {
+  width: 200px;
+  height: 300px;
+  perspective: 600px;
+  float: left;
+}
+
+.card-component {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-component__face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.card-component__face--front {
+  background: red;
+}
+
+.card-component__face--back {
+  background: blue;
+  transform: rotateY(180deg);
+}
+
+.card-component.is-flipped {
+  transform: rotateY(180deg);
+}
