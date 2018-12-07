@@ -2,7 +2,9 @@
   width: 200px;
   height: 300px;
   perspective: 600px;
-  float: left;
+  display: inline;
+  margin: 0.5rem;
+  cursor: pointer;
 }
 
 .card-component {
@@ -22,11 +24,11 @@
 }
 
 .card-component__face--front {
-  background: red;
+  background: white;
 }
 
 .card-component__face--back {
-  background: blue;
+  background: grey;
   transform: rotateY(180deg);
 }
 
