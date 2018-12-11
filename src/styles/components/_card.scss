@@ -2,9 +2,9 @@
   width: 200px;
   height: 300px;
   perspective: 600px;
-  display: inline;
   margin: 0.5rem;
   cursor: pointer;
+  text-align: center;
 }
 
 .card-component {
@@ -14,6 +14,7 @@
   transition: transform 1s;
   transform-style: preserve-3d;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: "Rajdhani", sans-serif;
 }
 
 .card-component__face {
@@ -24,12 +25,17 @@
 }
 
 .card-component__face--front {
-  background: white;
+  background: url("https://picsum.photos/200/350/?random") no-repeat;
+  background-size: 100%;
 }
 
 .card-component__face--back {
   background: grey;
   transform: rotateY(180deg);
+}
+
+.card-component__face--back p {
+  margin: 0;
 }
 
 .card-component.is-flipped {

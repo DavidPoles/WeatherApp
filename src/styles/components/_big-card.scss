@@ -1,12 +1,46 @@
 .big-card {
-  text-align: center;
-  border: 0.1rem solid black;
-  width: 40rem;
-  margin: auto;
-  margin-top: 1rem;
-  padding: 1rem;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.19);
+  margin: 2rem auto;
+  padding: 0.5rem;
+  padding-bottom: 0;
+  color: white;
+  background: url("https://picsum.photos/700/700/?random") no-repeat;
+  background-size: 100%;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.big-card__width {
+  width: 50%;
 }
 
 .big-card__temp {
-  font-size: 3rem;
+  font-size: 7rem;
+  float: right;
+  margin-top: -10rem;
+  margin-bottom: 0;
+}
+
+.big-card__sun {
+  display: flex;
+  margin-right: 0;
+  font-style: italic;
+  font-weight: 520;
+}
+
+.big-card__sunrise {
+  color: white;
+}
+
+.big-card__sunset {
+  color: white;
+  padding-left: 1.5rem;
+}
+
+.big-card__icon {
+  float: right;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-left: 60rem;
+  padding-top: -20rem;
+  padding-right: 1rem;
 }

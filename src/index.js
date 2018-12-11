@@ -4,6 +4,7 @@ import InputComponent from "./InputComponent";
 import "./styles/styles.scss";
 import CardComponent from "./CardComponent";
 import BigCardComponent from "./BigCardComponent";
+import Footer from "./Footer";
 
 class App extends React.Component {
   state = {
@@ -76,7 +77,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <nav className="navbar navbar-dark bg-dark">
-          <h1 className="title">WORLD WEATHER</h1>
+          <h1 className="header__title">WORLD WEATHER</h1>
           <InputComponent
             handleFormSubmit={this.handleFormSubmit}
             handleChange={this.handleChange}
@@ -123,6 +124,7 @@ class App extends React.Component {
                 );
               })}
         </div>
+        <Footer />
       </div>
     );
   }

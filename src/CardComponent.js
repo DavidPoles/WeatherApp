@@ -11,23 +11,44 @@ class CardComponent extends React.Component {
         >
           <div className="card-component__face card-component__face--front">
             <p className="dateStyle">{this.props.date}</p>
+            <p>15:00</p>
+            <p className="pTemp">{this.props.temp}°</p>
             <img
               src={`https://openweathermap.org/img/w/${this.props.icon}.png`}
             />
             <p>{this.props.description}</p>
-            <p className="pTemp">{this.props.temp}°</p>
           </div>
           <div className="card-component__face card-component__face--back">
-            <p>Min: {this.props.tempMin}°</p>
-            <i class="fas fa-temperature-low fa-2x" />
-            <p>Max: {this.props.tempMax}°</p>
-            <i class="fas fa-temperature-high fa-2x" />
-            <img src="http://icons.iconarchive.com/icons/icons8/windows-8/48/Science-Humidity-icon.png" />
-            <p>Humidity: {this.props.humidity}%</p>
-            <i class="fas fa-wind fa-2x" />
-            <p>Wind Speed: {this.props.windSpeed} meter/sec</p>
-            <i class="fas fa-cloud fa-2x" />
-            <p>Cloudiness: {this.props.clouds}%</p>
+            <div className="card-back__tempMin">
+              <i class="fas fa-temperature-low" />
+              <p>MIN {this.props.tempMin}°</p>
+            </div>
+
+            <div className="card-back__tempHigh">
+              <i class="fas fa-temperature-high " />
+              <p>MAX {this.props.tempMax}°</p>
+            </div>
+
+            <div className="card-back__humidity">
+              <img src="http://icons.iconarchive.com/icons/icons8/ios7/24/Science-Humidity-icon.png" />
+              <p>
+                HUMIDITY <br /> {this.props.humidity}%
+              </p>
+            </div>
+
+            <div className="card-back__wind-speed">
+              <i class="fas fa-wind" />
+              <p>
+                WIND SPEED <br /> {this.props.windSpeed} meter/sec
+              </p>
+            </div>
+
+            <div className="card-back__clouds">
+              <i class="fas fa-cloud" />
+              <p>
+                CLOUDINESS <br /> {this.props.clouds}%
+              </p>
+            </div>
           </div>
         </div>
       </div>

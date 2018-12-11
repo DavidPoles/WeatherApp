@@ -6,14 +6,14 @@ const InputComponent = props => {
       <form onSubmit={props.handleFormSubmit}>
         <input
           type="text"
-          className="input-component"
+          className="header__input-component"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-lg"
           onChange={props.handleChange}
-          placeholder="Enter City Name"
+          placeholder="Enter City"
           value={props.userInput}
         />
-        <button>Submit</button>
+        <button className="header__button">Submit</button>
       </form>
     </div>
   );

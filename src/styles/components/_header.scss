@@ -1,0 +1,35 @@
+.header__input-component {
+  background: #424242;
+  border: none;
+  height: 2.5rem;
+  width: 30rem;
+  font-size: 1.4rem;
+  color: white;
+  font-family: "Rajdhani", sans-serif;
+  padding: 0.5rem;
+}
+
+.header {
+  display: inline;
+}
+
+.header__title {
+  color: white;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 30px;
+  letter-spacing: -1px;
+  padding: 0.5rem;
+}
+
+.bg-dark {
+  background-color: #2b2928 !important;
+}
+
+.header__button {
+  background: #2b2928;
+  color: white;
+  border: 1px solid white;
+  font-family: "Rajdhani", sans-serif;
+  padding: 0.4rem;
+  margin: 0.5rem;
+}
