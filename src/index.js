@@ -17,7 +17,16 @@ class App extends React.Component {
     description: "",
     sunrise: "",
     sunset: "",
-    time: ""
+    time: "",
+    error: ""
+  };
+
+  handleErrors = response => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+
+    return response;
   };
 
   handleChange = e => {
@@ -32,6 +41,7 @@ class App extends React.Component {
         this.state.userInput +
         "&units=metric&APPID=028d85518865ffa64616dee5389f0ea3"
     )
+      .then(this.handleErrors)
       .then(results => {
         return results.json();
       })
@@ -43,11 +53,15 @@ class App extends React.Component {
             days: days,
             userInput: "",
             city: data.city.name,
-            country: data.city.country
+            country: data.city.country,
+            error: ""
           };
         });
       })
-      .catch(error => {});
+      .catch(error => {
+        error = "Cannot find city";
+        this.setState({ error });
+      });
 
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -76,14 +90,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <nav className="navbar navbar-dark bg-dark">
-          <h1 className="header__title">WORLD WEATHER</h1>
+        <nav className="input">
           <InputComponent
             handleFormSubmit={this.handleFormSubmit}
             handleChange={this.handleChange}
             userInput={this.state.userInput}
+            error={this.state.error.toString()}
           />
         </nav>
+        {this.state.error && <p className="error">{this.state.error}</p>}
         {this.state.days.length > 0 && (
           <BigCardComponent
             time={this.state.time.toString().slice(15, 21)}
@@ -118,13 +133,12 @@ class App extends React.Component {
                     tempMin={day.main.temp_min}
                     tempMax={day.main.temp_max}
                     humidity={day.main.humidity}
-                    windSpeed={day.wind.speed}
+                    windSpeed={Math.round(day.wind.speed)}
                     clouds={day.clouds.all}
                   />
                 );
               })}
         </div>
-        <Footer />
       </div>
     );
   }

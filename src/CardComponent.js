@@ -11,7 +11,6 @@ class CardComponent extends React.Component {
         >
           <div className="card-component__face card-component__face--front">
             <p className="dateStyle">{this.props.date}</p>
-            <p>15:00</p>
             <p className="pTemp">{this.props.temp}°</p>
             <img
               src={`https://openweathermap.org/img/w/${this.props.icon}.png`}
@@ -19,35 +18,37 @@ class CardComponent extends React.Component {
             <p>{this.props.description}</p>
           </div>
           <div className="card-component__face card-component__face--back">
-            <div className="card-back__tempMin">
-              <i class="fas fa-temperature-low" />
-              <p>MIN {this.props.tempMin}°</p>
+            <div className="card-back__temp">
+              <div className="card-back__temp-low">
+                <i class="fas fa-temperature-low" />
+                <p>
+                  MIN <br /> {this.props.tempMin}°
+                </p>
+              </div>
+
+              <div className="card-back__temp-high">
+                <i class="fas fa-temperature-high " />
+                <p>
+                  MAX <br /> {this.props.tempMax}°
+                </p>
+              </div>
             </div>
 
-            <div className="card-back__tempHigh">
-              <i class="fas fa-temperature-high " />
-              <p>MAX {this.props.tempMax}°</p>
-            </div>
+            <div className="card-back__humidity-and-wind">
+              <div className="card-back__clouds">
+                <i className="fas fa-cloud" />
+                <p>
+                  CLOUDINESS <br />{" "}
+                  <p style={{ marginLeft: -42 }}>{this.props.clouds}%</p>
+                </p>
+              </div>
 
-            <div className="card-back__humidity">
-              <img src="http://icons.iconarchive.com/icons/icons8/ios7/24/Science-Humidity-icon.png" />
-              <p>
-                HUMIDITY <br /> {this.props.humidity}%
-              </p>
-            </div>
-
-            <div className="card-back__wind-speed">
-              <i class="fas fa-wind" />
-              <p>
-                WIND SPEED <br /> {this.props.windSpeed} meter/sec
-              </p>
-            </div>
-
-            <div className="card-back__clouds">
-              <i class="fas fa-cloud" />
-              <p>
-                CLOUDINESS <br /> {this.props.clouds}%
-              </p>
+              <div className="card-back__wind">
+                <i class="fas fa-wind" />
+                <p>
+                  WIND SPEED <br /> {this.props.windSpeed} m/s
+                </p>
+              </div>
             </div>
           </div>
         </div>

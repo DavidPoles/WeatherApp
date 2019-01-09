@@ -1,8 +1,7 @@
 .scene {
   width: 200px;
-  height: 300px;
+  height: 310px;
   perspective: 600px;
-  margin: 0.5rem;
   cursor: pointer;
   text-align: center;
 }
@@ -25,17 +24,27 @@
 }
 
 .card-component__face--front {
-  background: url("https://picsum.photos/200/350/?random") no-repeat;
-  background-size: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(89, 112, 128, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  color: lighten(#2b2928, 80%);
 }
 
 .card-component__face--back {
-  background: grey;
+  color: lighten(#2b2928, 80%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(89, 112, 128, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
   transform: rotateY(180deg);
 }
 
 .card-component__face--back p {
   margin: 0;
+  font-size: 0.8rem;
 }
 
 .card-component.is-flipped {

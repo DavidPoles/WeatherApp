@@ -23,7 +23,7 @@ const BigCardComponent = props => {
           </p>
         </div>
         <div className="big-card__sunset">
-          <img src="http://icons.iconarchive.com/icons/iconsmind/outline/48/Sunset-icon.png" />
+          <img src="https://icons.iconarchive.com/icons/iconsmind/outline/48/Sunset-icon.png" />
           <p>
             Sunset <br /> {props.sunset}
           </p>

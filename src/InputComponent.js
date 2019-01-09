@@ -4,6 +4,7 @@ const InputComponent = props => {
   return (
     <div className="form">
       <form onSubmit={props.handleFormSubmit}>
+        <h1 className="header__title">WORLD WEATHER</h1>
         <input
           type="text"
           className="header__input-component"
